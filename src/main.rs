@@ -1,8 +1,5 @@
-// esprit parser
-extern crate esprit;
-
-// JS AST definitions
-extern crate easter;
+extern crate esprit; // Esprit: JS parser
+extern crate easter; // Easter: JS AST definitions
 
 use esprit::script;
 use easter::prog::Script;
@@ -24,7 +21,7 @@ fn count_lines(script: &Script) -> usize {
 
 const STACK_SIZE: usize = 4 * 1024 * 1024;
 
-// because it's recursive descent, esprit requires a bigger stack than the default stack size
+// esprit is heavily recursive and requires a big stack
 fn with_big_stack<F>(f: F)
     where F: FnOnce(),
           F: Send + 'static
